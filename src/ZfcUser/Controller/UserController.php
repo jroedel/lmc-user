@@ -258,6 +258,9 @@ class UserController extends AbstractActionController
 
         $form = $this->getChangePasswordForm();
         $prg = $this->prg(static::ROUTE_CHANGEPASSWD);
+        
+        //for redirect - just use default namespace
+        $defaultNamespace = $this->flashMessenger()->getNamespace();
 
         $fm = $this->flashMessenger()->setNamespace('change-password')->getMessages();
         if (isset($fm[0])) {
@@ -291,8 +294,11 @@ class UserController extends AbstractActionController
             );
         }
 
-        $this->flashMessenger()->setNamespace('change-password')->addMessage(true);
-        return $this->redirect()->toRoute(static::ROUTE_CHANGEPASSWD);
+        //if we have come this far - we should redirect user to profile, not show same form
+        //use default namespace for flash messages
+        $this->flashMessenger()->setNamespace($defaultNamespace);
+        $this->flashMessenger()->addMessage('Password changed successfully.');
+        return $this->redirect()->toRoute('zfcuser/profile');
     }
 
     public function changeEmailAction()
