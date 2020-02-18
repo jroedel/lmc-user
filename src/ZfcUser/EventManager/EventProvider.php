@@ -1,10 +1,10 @@
 <?php
 namespace ZfcUser\EventManager;
 use Traversable;
-use Zend\EventManager\EventManagerAwareInterface;
-use Zend\EventManager\EventManagerInterface;
-use Zend\EventManager\EventManager;
-use Zend\EventManager\SharedEventManager;
+use Laminas\EventManager\EventManagerAwareInterface;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\EventManager\EventManager;
+use Laminas\EventManager\SharedEventManager;
 abstract class EventProvider implements EventManagerAwareInterface
 {
     /**
