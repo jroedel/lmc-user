@@ -28,7 +28,7 @@
         "php": "^8.0",
         "laminas/laminas-authentication": "^2.5",
         "laminas/laminas-crypt": "^3.0",
-        "laminas/laminas-form": "^2.9",
+        "laminas/laminas-form": "^3.0",
         "laminas/laminas-inputfilter": "^2.7",
         "laminas/laminas-loader": "^2.5",
         "laminas/laminas-modulemanager": "^2.7",
