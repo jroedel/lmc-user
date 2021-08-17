@@ -43,7 +43,7 @@
         "laminas/laminas-mvc-plugin-flashmessenger": "^1.0",
         "laminas/laminas-i18n": "^2.7",
         "laminas/laminas-mvc-plugin-prg": "^1.0",
-        "laminas/laminas-hydrator": "^2.0"
+        "laminas/laminas-hydrator": "^4.2"
     },
     "require-dev": {
         "phpunit/phpunit": ">=3.7,<4",
