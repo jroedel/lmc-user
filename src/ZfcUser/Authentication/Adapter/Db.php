@@ -118,6 +118,7 @@ class Db extends AbstractAdapter
         $this->getStorage()->write($storage);
         $e->setCode(AuthenticationResult::SUCCESS)
           ->setMessages(array('Authentication successful.'));
+        return true;
     }
 
     protected function updateUserPasswordHash(UserInterface $userObject, $password, Bcrypt $bcrypt)

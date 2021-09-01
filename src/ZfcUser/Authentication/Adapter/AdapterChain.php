@@ -117,6 +117,8 @@ class AdapterChain implements AdapterInterface
         $e = $this->getEvent();
         $e->setName('logout');
         $this->getEventManager()->triggerEvent($e);
+        
+        return $this;
     }
 
     /**
