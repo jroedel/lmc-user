@@ -7,6 +7,7 @@ use Laminas\Stdlib\RequestInterface as Request;
 
 class AdapterChainEvent extends Event
 {
+    protected $request;
     /**
      * getIdentity
      *

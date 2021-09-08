@@ -5,7 +5,7 @@ use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Platform;
 use Laminas\Db\ResultSet;
 
-class MasterSlaveAdapter extends Adapter implements MasterSlaveAdapterInterface
+class MasterSlaveAdapter extends Adapter implements \ZfcUser\Db\Adapter\MasterSlaveAdapterInterface
 {
     /**
      * slave adapter
