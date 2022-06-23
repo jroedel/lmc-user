@@ -112,7 +112,7 @@ class RedirectCallback
                 return $this->router->assemble(array(), array('name' => $route));
                 break;
             default:
-                return $this->router->assemble(array(), array('name' => 'zfcuser'));
+                return $this->router->assemble(array(), array('name' => 'lmcuser'));
         }
     }
 }

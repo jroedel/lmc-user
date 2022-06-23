@@ -149,21 +149,21 @@ $settings = array(
      *
      * Upon successful login the user will be redirected to the entered route
      *
-     * Default value: 'zfcuser'
+     * Default value: 'lmcuser'
      * Accepted values: A valid route name within your application
      *
      */
-    //'login_redirect_route' => 'zfcuser',
+    //'login_redirect_route' => 'lmcuser',
 
     /**
      * Logout Redirect Route
      *
      * Upon logging out the user will be redirected to the entered route
      *
-     * Default value: 'zfcuser/login'
+     * Default value: 'lmcuser/login'
      * Accepted values: A valid route name within your application
      */
-    //'logout_redirect_route' => 'zfcuser/login',
+    //'logout_redirect_route' => 'lmcuser/login',
 
     /**
      * Password Security
@@ -226,10 +226,10 @@ $settings = array(
  * You do not need to edit below this line
  */
 return array(
-    'zfcuser' => $settings,
+    'lmcuser' => $settings,
     'service_manager' => array(
         'aliases' => array(
-            'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Laminas\Db\Adapter\Adapter',
+            'lmcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Laminas\Db\Adapter\Adapter',
         ),
     ),
 );

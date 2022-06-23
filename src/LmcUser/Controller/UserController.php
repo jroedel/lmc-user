@@ -13,12 +13,12 @@ use LmcUser\Options\UserControllerOptionsInterface;
 
 class UserController extends AbstractActionController
 {
-    const ROUTE_CHANGEPASSWD = 'zfcuser/changepassword';
-    const ROUTE_LOGIN        = 'zfcuser/login';
-    const ROUTE_REGISTER     = 'zfcuser/register';
-    const ROUTE_CHANGEEMAIL  = 'zfcuser/changeemail';
+    const ROUTE_CHANGEPASSWD = 'lmcuser/changepassword';
+    const ROUTE_LOGIN        = 'lmcuser/login';
+    const ROUTE_REGISTER     = 'lmcuser/register';
+    const ROUTE_CHANGEEMAIL  = 'lmcuser/changeemail';
 
-    const CONTROLLER_NAME    = 'zfcuser';
+    const CONTROLLER_NAME    = 'lmcuser';
 
     /**
      * @var UserService
@@ -117,7 +117,7 @@ class UserController extends AbstractActionController
         $form->setData($request->getPost());
 
         if (!$form->isValid()) {
-            $this->flashMessenger()->setNamespace('zfcuser-login-form')->addMessage($this->failedLoginMessage);
+            $this->flashMessenger()->setNamespace('lmcuser-login-form')->addMessage($this->failedLoginMessage);
             return $this->redirect()->toUrl($this->url()->fromRoute(static::ROUTE_LOGIN).($redirect ? '?redirect='. rawurlencode($redirect) : ''));
         }
 
@@ -164,7 +164,7 @@ class UserController extends AbstractActionController
         $auth = $this->zfcUserAuthentication()->getAuthService()->authenticate($adapter);
 
         if (!$auth->isValid()) {
-            $this->flashMessenger()->setNamespace('zfcuser-login-form')->addMessage($this->failedLoginMessage);
+            $this->flashMessenger()->setNamespace('lmcuser-login-form')->addMessage($this->failedLoginMessage);
             $adapter->resetAdapters();
             return $this->redirect()->toUrl(
                 $this->url()->fromRoute(static::ROUTE_LOGIN) .
@@ -298,7 +298,7 @@ class UserController extends AbstractActionController
         //use default namespace for flash messages
         $this->flashMessenger()->setNamespace($defaultNamespace);
         $this->flashMessenger()->addMessage('Password changed successfully.');
-        return $this->redirect()->toRoute('zfcuser/profile');
+        return $this->redirect()->toRoute('lmcuser/profile');
     }
 
     public function changeEmailAction()
@@ -360,7 +360,7 @@ class UserController extends AbstractActionController
     public function getUserService()
     {
         if (!$this->userService) {
-            $this->userService = $this->serviceLocator->get('zfcuser_user_service');
+            $this->userService = $this->serviceLocator->get('lmcuser_user_service');
         }
         return $this->userService;
     }
@@ -374,7 +374,7 @@ class UserController extends AbstractActionController
     public function getRegisterForm()
     {
         if (!$this->registerForm) {
-            $this->setRegisterForm($this->serviceLocator->get('zfcuser_register_form'));
+            $this->setRegisterForm($this->serviceLocator->get('lmcuser_register_form'));
         }
         return $this->registerForm;
     }
@@ -387,7 +387,7 @@ class UserController extends AbstractActionController
     public function getLoginForm()
     {
         if (!$this->loginForm) {
-            $this->setLoginForm($this->serviceLocator->get('zfcuser_login_form'));
+            $this->setLoginForm($this->serviceLocator->get('lmcuser_login_form'));
         }
         return $this->loginForm;
     }
@@ -401,7 +401,7 @@ class UserController extends AbstractActionController
     public function getChangePasswordForm()
     {
         if (!$this->changePasswordForm) {
-            $this->setChangePasswordForm($this->serviceLocator->get('zfcuser_change_password_form'));
+            $this->setChangePasswordForm($this->serviceLocator->get('lmcuser_change_password_form'));
         }
         return $this->changePasswordForm;
     }
@@ -432,7 +432,7 @@ class UserController extends AbstractActionController
     public function getOptions()
     {
         if (!$this->options instanceof UserControllerOptionsInterface) {
-            $this->setOptions($this->serviceLocator->get('zfcuser_module_options'));
+            $this->setOptions($this->serviceLocator->get('lmcuser_module_options'));
         }
         return $this->options;
     }
@@ -444,7 +444,7 @@ class UserController extends AbstractActionController
     public function getChangeEmailForm()
     {
         if (!$this->changeEmailForm) {
-            $this->setChangeEmailForm($this->serviceLocator->get('zfcuser_change_email_form'));
+            $this->setChangeEmailForm($this->serviceLocator->get('lmcuser_change_email_form'));
         }
         return $this->changeEmailForm;
     }

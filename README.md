@@ -163,8 +163,8 @@ Options
 
 The LmcUser module has some options to allow you to quickly customize the basic
 functionality. After installing LmcUser, copy
-`./vendor/zf-commons/zfc-user/config/zfcuser.global.php.dist` to
-`./config/autoload/zfcuser.global.php` and change the values as desired.
+`./vendor/zf-commons/zfc-user/config/lmcuser.global.php.dist` to
+`./config/autoload/lmcuser.global.php` and change the values as desired.
 
 The following options are available:
 
