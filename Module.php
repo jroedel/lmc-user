@@ -1,6 +1,6 @@
 <?php
 
-namespace ZfcUser;
+namespace LmcUser;
 
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\ModuleManager\Feature\ControllerPluginProviderInterface;
@@ -22,7 +22,7 @@ class Module implements
     {
         return array(
             'factories' => array(
-                'zfcUserAuthentication' => \ZfcUser\Factory\Controller\Plugin\ZfcUserAuthentication::class,
+                'lmcUserAuthentication' => \LmcUser\Factory\Controller\Plugin\LmcUserAuthentication::class,
             ),
         );
     }
@@ -31,7 +31,7 @@ class Module implements
     {
         return array(
             'factories' => array(
-                'zfcuser' => \ZfcUser\Factory\Controller\UserControllerFactory::class,
+                'lmcuser' => \LmcUser\Factory\Controller\UserControllerFactory::class,
             ),
         );
     }
@@ -40,9 +40,9 @@ class Module implements
     {
         return array(
             'factories' => array(
-                'zfcUserDisplayName' => \ZfcUser\Factory\View\Helper\ZfcUserDisplayName::class,
-                'zfcUserIdentity' => \ZfcUser\Factory\View\Helper\ZfcUserIdentity::class,
-                'zfcUserLoginWidget' => \ZfcUser\Factory\View\Helper\ZfcUserLoginWidget::class,
+                'lmcUserDisplayName' => \LmcUser\Factory\View\Helper\LmcUserDisplayName::class,
+                'lmcUserIdentity' => \LmcUser\Factory\View\Helper\LmcUserIdentity::class,
+                'lmcUserLoginWidget' => \LmcUser\Factory\View\Helper\LmcUserLoginWidget::class,
             ),
         );
 
@@ -52,33 +52,33 @@ class Module implements
     {
         return array(
             'aliases' => array(
-                'zfcuser_zend_db_adapter' => \Laminas\Db\Adapter\Adapter::class,
+                'lmcuser_zend_db_adapter' => \Laminas\Db\Adapter\Adapter::class,
             ),
             'invokables' => array(
-                'zfcuser_register_form_hydrator' => \Laminas\Hydrator\ClassMethodsHydrator::class,
+                'lmcuser_register_form_hydrator' => \Laminas\Hydrator\ClassMethodsHydrator::class,
             ),
             'factories' => array(
-                'zfcuser_redirect_callback' => \ZfcUser\Factory\Controller\RedirectCallbackFactory::class,
-                'zfcuser_module_options' => \ZfcUser\Factory\Options\ModuleOptions::class,
-                'ZfcUser\Authentication\Adapter\AdapterChain' => \ZfcUser\Authentication\Adapter\AdapterChainServiceFactory::class,
+                'lmcuser_redirect_callback' => \LmcUser\Factory\Controller\RedirectCallbackFactory::class,
+                'lmcuser_module_options' => \LmcUser\Factory\Options\ModuleOptions::class,
+                'LmcUser\Authentication\Adapter\AdapterChain' => \LmcUser\Authentication\Adapter\AdapterChainServiceFactory::class,
 
-                // We alias this one because it's ZfcUser's instance of
+                // We alias this one because it's LmcUser's instance of
                 // Laminas\Authentication\AuthenticationService. We don't want to
                 // hog the FQCN service alias for a Zend\* class.
-                'zfcuser_auth_service' => \ZfcUser\Factory\AuthenticationService::class,
+                'lmcuser_auth_service' => \LmcUser\Factory\AuthenticationService::class,
 
-                'zfcuser_user_hydrator' => \ZfcUser\Factory\UserHydrator::class,
-                'zfcuser_user_mapper' => \ZfcUser\Factory\Mapper\User::class,
+                'lmcuser_user_hydrator' => \LmcUser\Factory\UserHydrator::class,
+                'lmcuser_user_mapper' => \LmcUser\Factory\Mapper\User::class,
 
-                'zfcuser_login_form' => \ZfcUser\Factory\Form\Login::class,
-                'zfcuser_register_form' => \ZfcUser\Factory\Form\Register::class,
-                'zfcuser_change_password_form' => \ZfcUser\Factory\Form\ChangePassword::class,
-                'zfcuser_change_email_form' => \ZfcUser\Factory\Form\ChangeEmail::class,
+                'lmcuser_login_form' => \LmcUser\Factory\Form\Login::class,
+                'lmcuser_register_form' => \LmcUser\Factory\Form\Register::class,
+                'lmcuser_change_password_form' => \LmcUser\Factory\Form\ChangePassword::class,
+                'lmcuser_change_email_form' => \LmcUser\Factory\Form\ChangeEmail::class,
 
-                'ZfcUser\Authentication\Adapter\Db' => \ZfcUser\Factory\Authentication\Adapter\DbFactory::class,
-                'ZfcUser\Authentication\Storage\Db' => \ZfcUser\Factory\Authentication\Storage\DbFactory::class,
+                'LmcUser\Authentication\Adapter\Db' => \LmcUser\Factory\Authentication\Adapter\DbFactory::class,
+                'LmcUser\Authentication\Storage\Db' => \LmcUser\Factory\Authentication\Storage\DbFactory::class,
 
-                'zfcuser_user_service' => \ZfcUser\Factory\Service\UserFactory::class,
+                'lmcuser_user_service' => \LmcUser\Factory\Service\UserFactory::class,
             ),
         );
     }

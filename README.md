@@ -1,7 +1,7 @@
-ZfcUser
+LmcUser
 =======
-[![Build Status](https://travis-ci.org/ZF-Commons/ZfcUser.png)](https://travis-ci.org/ZF-Commons/ZfcUser)
-[![Code Coverage](https://scrutinizer-ci.com/g/ZF-Commons/ZfcUser/badges/coverage.png?s=7d5932c77bea64a417ac8e3da51dca6da1fcb22e)](https://scrutinizer-ci.com/g/ZF-Commons/ZfcUser/)
+[![Build Status](https://travis-ci.org/ZF-Commons/LmcUser.png)](https://travis-ci.org/ZF-Commons/LmcUser)
+[![Code Coverage](https://scrutinizer-ci.com/g/ZF-Commons/LmcUser/badges/coverage.png?s=7d5932c77bea64a417ac8e3da51dca6da1fcb22e)](https://scrutinizer-ci.com/g/ZF-Commons/LmcUser/)
 [![Latest Stable Version](https://poser.pugx.org/zf-commons/zfc-user/v/stable.png)](https://packagist.org/packages/zf-commons/zfc-user)
 [![Latest Unstable Version](https://poser.pugx.org/zf-commons/zfc-user/v/unstable.png)](https://packagist.org/packages/zf-commons/zfc-user)
 
@@ -10,19 +10,19 @@ Created by Evan Coury and the ZF-Commons team
 Introduction
 ------------
 
-ZfcUser is a user registration and authentication module for Zend Framework 2.
-Out of the box, ZfcUser works with Laminas\Db, however alternative storage adapter
-modules are available (see below). ZfcUser provides the foundations for adding
+LmcUser is a user registration and authentication module for Zend Framework 2.
+Out of the box, LmcUser works with Laminas\Db, however alternative storage adapter
+modules are available (see below). LmcUser provides the foundations for adding
 user authentication and registration to your ZF2 site. It is designed to be very
 simple and easy to extend.
 
-More information and examples are available on the [ZfcUser Wiki](https://github.com/ZF-Commons/ZfcUser/wiki)
+More information and examples are available on the [LmcUser Wiki](https://github.com/ZF-Commons/LmcUser/wiki)
 
 Versions
 --------
-Please use below table to figure out what version of ZfcUser you should use.
+Please use below table to figure out what version of LmcUser you should use.
 
-| ZfcUser version | Supported Zend Framework version | Status                                      |
+| LmcUser version | Supported Zend Framework version | Status                                      |
 |-----------------|----------------------------------|---------------------------------------------|
 | 1.x             | <= 2.5                           | Security-fixes only                         |
 | 2.x             | >= 2.6 < 3                       | bug-fixes, security-fixes                   |
@@ -31,18 +31,18 @@ Please use below table to figure out what version of ZfcUser you should use.
 Storage Adapter Modules
 -----------------------
 
-By default, ZfcUser ships with support for using Laminas\Db for persisting users.
+By default, LmcUser ships with support for using Laminas\Db for persisting users.
 However, by installing an optional alternative storage adapter module, you can
 take advantage of other methods of persisting users:
 
-- [ZfcUserDoctrineORM](https://github.com/ZF-Commons/ZfcUserDoctrineORM) - Doctrine2 ORM
-- [ZfcUserDoctrineMongoODM](https://github.com/ZF-Commons/ZfcUserDoctrineMongoODM) - Doctrine2 MongoDB ODM
+- [LmcUserDoctrineORM](https://github.com/ZF-Commons/LmcUserDoctrineORM) - Doctrine2 ORM
+- [LmcUserDoctrineMongoODM](https://github.com/ZF-Commons/LmcUserDoctrineMongoODM) - Doctrine2 MongoDB ODM
 
 Requirements
 ------------
 
 * [Zend Framework 2](https://github.com/zendframework/zf2) (latest master)
-* [ZfcBase](https://github.com/ZF-Commons/ZfcBase) (latest master).
+* [LmcBase](https://github.com/ZF-Commons/LmcBase) (latest master).
 
 Features / Goals
 ----------------
@@ -62,13 +62,13 @@ Installation
 
 #### By cloning project
 
-1. Install the [ZfcBase](https://github.com/ZF-Commons/ZfcBase) ZF2 module
+1. Install the [LmcBase](https://github.com/ZF-Commons/LmcBase) ZF2 module
    by cloning it into `./vendor/`.
 2. Clone this project into your `./vendor/` directory.
 
 #### With composer
 
-1. Add this project and [ZfcBase](https://github.com/ZF-Commons/ZfcBase) in your composer.json:
+1. Add this project and [LmcBase](https://github.com/ZF-Commons/LmcBase) in your composer.json:
 
     ```json
     "require": {  
@@ -76,7 +76,7 @@ Installation
     }  
     ```
 
-2. Now tell composer to download ZfcUser by running the command:
+2. Now tell composer to download LmcUser by running the command:
 
     ```bash
     $ php composer.phar update
@@ -91,13 +91,13 @@ Installation
     return array(
         'modules' => array(
             // ...
-            'ZfcUser',
+            'LmcUser',
         ),
         // ...
     );
     ```
 
-2. Then Import the SQL schema located in `./vendor/zf-commons/zfc-user/data/schema.sql` (if you installed using the Composer) or in `./vendor/ZfcUser/data/schema.sql`.
+2. Then Import the SQL schema located in `./vendor/zf-commons/zfc-user/data/schema.sql` (if you installed using the Composer) or in `./vendor/LmcUser/data/schema.sql`.
 
 ### Post-Install: Doctrine2 ORM
 
@@ -161,8 +161,8 @@ suitable for computing power in 2013.
 Options
 -------
 
-The ZfcUser module has some options to allow you to quickly customize the basic
-functionality. After installing ZfcUser, copy
+The LmcUser module has some options to allow you to quickly customize the basic
+functionality. After installing LmcUser, copy
 `./vendor/zf-commons/zfc-user/config/zfcuser.global.php.dist` to
 `./config/autoload/zfcuser.global.php` and change the values as desired.
 
@@ -170,7 +170,7 @@ The following options are available:
 
 - **user_entity_class** - Name of Entity class to use. Useful for using your own
   entity class instead of the default one provided. Default is
-  `ZfcUser\Entity\User`.
+  `LmcUser\Entity\User`.
 - **enable_username** - Boolean value, enables username field on the
   registration form. Default is `false`.
 - **auth_identity_fields** - Array value, specifies which fields a user can
@@ -243,7 +243,7 @@ module.config.php, or a dedicated recaptcha.config.php):
                         ),
                     ),
                 ),
-                'ZfcUser\Form\Register' => array(
+                'LmcUser\Form\Register' => array(
                     'parameters' => array(
                         'captcha_element'=>'recaptcha_element',
                     ),

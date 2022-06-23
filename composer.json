@@ -6,7 +6,7 @@
     "keywords": [
         "zf2"
     ],
-    "homepage": "https://github.com/ZF-Commons/ZfcUser",
+    "homepage": "https://github.com/ZF-Commons/LmcUser",
     "authors": [
         {
             "name": "Evan Coury",
@@ -56,7 +56,7 @@
     },
     "autoload": {
         "psr-0": {
-            "ZfcUser": "src/"
+            "LmcUser": "src/"
         },
         "classmap": [
             "./Module.php"

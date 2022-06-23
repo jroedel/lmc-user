@@ -1,6 +1,6 @@
 <?php
 /**
- * ZfcUser Configuration
+ * LmcUser Configuration
  *
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it and change the values as you wish.
@@ -10,7 +10,7 @@ $settings = array(
      * Laminas\Db\Adapter\Adapter DI Alias
      *
      * Please specify the DI alias for the configured Laminas\Db\Adapter\Adapter
-     * instance that ZfcUser should use.
+     * instance that LmcUser should use.
      */
     //'zend_db_adapter' => 'Laminas\Db\Adapter\Adapter',
 
@@ -18,10 +18,10 @@ $settings = array(
      * User Model Entity Class
      *
      * Name of Entity class to use. Useful for using your own entity class
-     * instead of the default one provided. Default is ZfcUser\Entity\User.
-     * The entity class should implement ZfcUser\Entity\UserInterface
+     * instead of the default one provided. Default is LmcUser\Entity\User.
+     * The entity class should implement LmcUser\Entity\UserInterface
      */
-    //'user_entity_class' => 'ZfcUser\Entity\User',
+    //'user_entity_class' => 'LmcUser\Entity\User',
 
     /**
      * Enable registration
@@ -47,10 +47,10 @@ $settings = array(
      *
      * Specify the adapters that will be used to try and authenticate the user
      *
-     * Default value: array containing 'ZfcUser\Authentication\Adapter\Db' with priority 100
-     * Accepted values: array containing services that implement 'ZfcUser\Authentication\Adapter\ChainableAdapter'
+     * Default value: array containing 'LmcUser\Authentication\Adapter\Db' with priority 100
+     * Accepted values: array containing services that implement 'LmcUser\Authentication\Adapter\ChainableAdapter'
      */
-    'auth_adapters' => array( 100 => 'ZfcUser\Authentication\Adapter\Db' ),
+    'auth_adapters' => array( 100 => 'LmcUser\Authentication\Adapter\Db' ),
 
     /**
      * Enable Display Name
@@ -218,7 +218,7 @@ $settings = array(
     //'table_name' => 'user',
     
     /**
-     * End of ZfcUser configuration
+     * End of LmcUser configuration
      */
 );
 
