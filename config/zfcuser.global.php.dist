@@ -12,7 +12,7 @@ $settings = array(
      * Please specify the DI alias for the configured Laminas\Db\Adapter\Adapter
      * instance that LmcUser should use.
      */
-    //'zend_db_adapter' => 'Laminas\Db\Adapter\Adapter',
+    //'laminas_db_adapter' => 'Laminas\Db\Adapter\Adapter',
 
     /**
      * User Model Entity Class
@@ -229,7 +229,7 @@ return array(
     'lmcuser' => $settings,
     'service_manager' => array(
         'aliases' => array(
-            'lmcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Laminas\Db\Adapter\Adapter',
+            'lmcuser_laminas_db_adapter' => (isset($settings['laminas_db_adapter'])) ? $settings['laminas_db_adapter']: 'Laminas\Db\Adapter\Adapter',
         ),
     ),
 );

@@ -14,7 +14,7 @@ class User implements FactoryInterface
     {
         /** @var ModuleOptions $options */
         $options = $serviceLocator->get('lmcuser_module_options');
-        $dbAdapter = $serviceLocator->get('lmcuser_zend_db_adapter');
+        $dbAdapter = $serviceLocator->get('lmcuser_laminas_db_adapter');
 
         $entityClass = $options->getUserEntityClass();
         $tableName = $options->getTableName();

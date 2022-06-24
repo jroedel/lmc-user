@@ -52,7 +52,7 @@ class Module implements
     {
         return array(
             'aliases' => array(
-                'lmcuser_zend_db_adapter' => \Laminas\Db\Adapter\Adapter::class,
+                'lmcuser_laminas_db_adapter' => \Laminas\Db\Adapter\Adapter::class,
             ),
             'invokables' => array(
                 'lmcuser_register_form_hydrator' => \Laminas\Hydrator\ClassMethodsHydrator::class,
