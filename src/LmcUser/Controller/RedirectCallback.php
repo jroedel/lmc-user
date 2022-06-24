@@ -132,4 +132,18 @@ class RedirectCallback
                 return $this->router->assemble(array(), array('name' => 'lmcuser'));
         }
     }
+    
+    /**
+     * @param $route
+     * @return bool|mixed
+     */
+    protected function assembleUrl($route)
+    {
+        try {
+            return $this->router->assemble(array(), array('name' => $route));
+        } catch (Exception\RuntimeException $e) {
+            //This route matches already to an url, so return it of no route by name
+            return $route;
+        }
+    }
 }
