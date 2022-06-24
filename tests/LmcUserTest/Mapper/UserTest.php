@@ -262,9 +262,9 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function testInsertUpdateDelete()
     {
         $baseEntity = new Entity();
-        $baseEntity->setEmail('zfc-user-foo@zend-framework.org');
-        $baseEntity->setUsername('zfc-user-foo');
-        $baseEntity->setPassword('zfc-user-foo');
+        $baseEntity->setEmail('lmc-user-foo@zend-framework.org');
+        $baseEntity->setUsername('lmc-user-foo');
+        $baseEntity->setPassword('lmc-user-foo');
 
         /* @var $entityEqual Entity */
         /* @var $dbAdapter Adapter */
@@ -318,12 +318,12 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function providerTestFindBy()
     {
         $user = new Entity();
-        $user->setEmail('zfc-user@github.com');
-        $user->setUsername('zfc-user');
+        $user->setEmail('lmc-user@github.com');
+        $user->setUsername('lmc-user');
         $user->setDisplayName('Lmc-User');
         $user->setId('1');
         $user->setState(1);
-        $user->setPassword('zfc-user');
+        $user->setPassword('lmc-user');
 
         return array(
             array(

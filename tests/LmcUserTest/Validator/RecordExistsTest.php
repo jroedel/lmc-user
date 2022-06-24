@@ -29,10 +29,10 @@ class RecordExistsTest extends \PHPUnit_Framework_TestCase
     {
         $this->mapper->expects($this->once())
                      ->method('findByUsername')
-                     ->with('zfcUser')
-                     ->will($this->returnValue('zfcUser'));
+                     ->with('lmcUser')
+                     ->will($this->returnValue('lmcUser'));
 
-        $result = $this->validator->isValid('zfcUser');
+        $result = $this->validator->isValid('lmcUser');
         $this->assertTrue($result);
     }
 
@@ -43,10 +43,10 @@ class RecordExistsTest extends \PHPUnit_Framework_TestCase
     {
         $this->mapper->expects($this->once())
                      ->method('findByUsername')
-                     ->with('zfcUser')
+                     ->with('lmcUser')
                      ->will($this->returnValue(false));
 
-        $result = $this->validator->isValid('zfcUser');
+        $result = $this->validator->isValid('lmcUser');
         $this->assertFalse($result);
 
         $options = $this->validator->getOptions();

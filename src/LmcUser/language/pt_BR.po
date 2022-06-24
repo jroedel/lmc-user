@@ -100,29 +100,29 @@ msgstr "Alterar email de %s"
 msgid "Email address changed successfully."
 msgstr "Endereço de e-mail alterado com sucesso."
 
-#: view/zfc-user/user/changeemail.phtml:5
+#: view/lmc-user/user/changeemail.phtml:5
 msgid "Unable to update your email address. Please try again."
 msgstr ""
 "Não foi possível atualizar o seu endereço de e-mail. Por favor, tente "
 "novamente."
 
-#: view/zfc-user/user/changepassword.phtml:1
+#: view/lmc-user/user/changepassword.phtml:1
 #, php-format
 msgid "Change Password for %s"
 msgstr "Mudar senha de %s"
 
-#: view/zfc-user/user/changepassword.phtml:3
+#: view/lmc-user/user/changepassword.phtml:3
 msgid "Password changed successfully."
 msgstr "Senha alterada com sucesso."
 
-#: view/zfc-user/user/changepassword.phtml:5
+#: view/lmc-user/user/changepassword.phtml:5
 msgid "Unable to update your password. Please try again."
 msgstr "Não foi possível atualizar a senha. Por favor, tente novamente."
 
-#: view/zfc-user/user/index.phtml:2
+#: view/lmc-user/user/index.phtml:2
 msgid "Hello"
 msgstr "Olá"
 
-#: view/zfc-user/user/index.phtml:3
+#: view/lmc-user/user/index.phtml:3
 msgid "Sign Out"
 msgstr "Sair"

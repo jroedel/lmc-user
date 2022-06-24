@@ -115,16 +115,16 @@ msgstr "Changement du mot de passe pour %s"
 msgid "Password changed successfully."
 msgstr "Le mot de passe a été modifié avec succès."
 
-#: view/zfc-user/user/changepassword.phtml:5
+#: view/lmc-user/user/changepassword.phtml:5
 msgid "Unable to update your password. Please try again."
 msgstr ""
 "Impossible de mettre à jour votre mot de passe. Merci de réessayer "
 "ultérieurement"
 
-#: view/zfc-user/user/index.phtml:2
+#: view/lmc-user/user/index.phtml:2
 msgid "Hello"
 msgstr "Bonjour"
 
-#: view/zfc-user/user/index.phtml:3
+#: view/lmc-user/user/index.phtml:3
 msgid "Sign Out"
 msgstr "Se déconnecter"

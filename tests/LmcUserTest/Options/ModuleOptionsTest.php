@@ -23,8 +23,8 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetGetLoginRedirectRoute()
     {
-        $this->options->setLoginRedirectRoute('zfcUserRoute');
-        $this->assertEquals('zfcUserRoute', $this->options->getLoginRedirectRoute());
+        $this->options->setLoginRedirectRoute('lmcUserRoute');
+        $this->assertEquals('lmcUserRoute', $this->options->getLoginRedirectRoute());
     }
 
     /**
@@ -41,8 +41,8 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetGetLogoutRedirectRoute()
     {
-        $this->options->setLogoutRedirectRoute('zfcUserRoute');
-        $this->assertEquals('zfcUserRoute', $this->options->getLogoutRedirectRoute());
+        $this->options->setLogoutRedirectRoute('lmcUserRoute');
+        $this->assertEquals('lmcUserRoute', $this->options->getLogoutRedirectRoute());
     }
 
     /**
@@ -77,8 +77,8 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetGetUserLoginWidgetViewTemplate()
     {
-        $this->options->setUserLoginWidgetViewTemplate('zfcUser.phtml');
-        $this->assertEquals('zfcUser.phtml', $this->options->getUserLoginWidgetViewTemplate());
+        $this->options->setUserLoginWidgetViewTemplate('lmcUser.phtml');
+        $this->assertEquals('lmcUser.phtml', $this->options->getUserLoginWidgetViewTemplate());
     }
 
     /**
@@ -86,7 +86,7 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUserLoginWidgetViewTemplate()
     {
-        $this->assertEquals('zfc-user/user/login.phtml', $this->options->getUserLoginWidgetViewTemplate());
+        $this->assertEquals('lmc-user/user/login.phtml', $this->options->getUserLoginWidgetViewTemplate());
     }
 
     /**

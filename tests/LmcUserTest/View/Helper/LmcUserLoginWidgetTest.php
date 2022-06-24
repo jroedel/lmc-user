@@ -27,20 +27,20 @@ class LmcUserLoginWidgetTest extends \PHPUnit_Framework_TestCase
         $attr[] = array(
             array(
                 'render' => true,
-                'redirect' => 'zfcUser'
+                'redirect' => 'lmcUser'
             ),
             array(
                 'loginForm' => null,
-                'redirect' => 'zfcUser'
+                'redirect' => 'lmcUser'
             ),
         );
         $attr[] = array(
             array(
-                'redirect' => 'zfcUser'
+                'redirect' => 'lmcUser'
             ),
             array(
                 'loginForm' => null,
-                'redirect' => 'zfcUser'
+                'redirect' => 'lmcUser'
             ),
         );
         $attr[] = array(
@@ -93,11 +93,11 @@ class LmcUserLoginWidgetTest extends \PHPUnit_Framework_TestCase
     {
         $result = $this->helper->__invoke(array(
             'render' => false,
-            'redirect' => 'zfcUser'
+            'redirect' => 'lmcUser'
         ));
 
         $this->assertInstanceOf('Laminas\View\Model\ViewModel', $result);
-        $this->assertEquals('zfcUser', $result->redirect);
+        $this->assertEquals('lmcUser', $result->redirect);
     }
 
     /**
@@ -117,12 +117,12 @@ class LmcUserLoginWidgetTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetViewTemplate()
     {
-        $this->helper->setViewTemplate('zfcUser');
+        $this->helper->setViewTemplate('lmcUser');
 
         $reflectionClass = new \ReflectionClass('LmcUser\View\Helper\LmcUserLoginWidget');
         $reflectionProperty = $reflectionClass->getProperty('viewTemplate');
         $reflectionProperty->setAccessible(true);
 
-        $this->assertEquals('zfcUser', $reflectionProperty->getValue($this->helper));
+        $this->assertEquals('lmcUser', $reflectionProperty->getValue($this->helper));
     }
 }
