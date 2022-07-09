@@ -2,7 +2,7 @@
 
 namespace LmcUser\Authentication\Adapter;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use Laminas\Authentication\Result as AuthenticationResult;
 use Laminas\EventManager\EventInterface;
 use Laminas\ServiceManager\ServiceManager;
