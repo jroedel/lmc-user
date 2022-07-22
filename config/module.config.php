@@ -1,88 +1,89 @@
 <?php
 
-return array(
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'lmcuser' => __DIR__ . '/../view',
-        ),
-    ),
+declare(strict_types=1);
 
-    'router' => array(
-        'routes' => array(
-            'lmcuser' => array(
-                'type' => 'Literal',
-                'priority' => 1000,
-                'options' => array(
-                    'route' => '/user',
-                    'defaults' => array(
+return [
+    'view_manager' => [
+        'template_path_stack' => [
+            'lmcuser' => __DIR__ . '/../view',
+        ],
+    ],
+    'router'       => [
+        'routes' => [
+            'lmcuser' => [
+                'type'          => 'Literal',
+                'priority'      => 1000,
+                'options'       => [
+                    'route'    => '/user',
+                    'defaults' => [
                         'controller' => 'lmcuser',
                         'action'     => 'index',
-                    ),
-                ),
+                    ],
+                ],
                 'may_terminate' => true,
-                'child_routes' => array(
-                    'login' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/login',
-                            'defaults' => array(
+                'child_routes'  => [
+                    'login'          => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/login',
+                            'defaults' => [
                                 'controller' => 'lmcuser',
                                 'action'     => 'login',
-                            ),
-                        ),
-                    ),
-                    'authenticate' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/authenticate',
-                            'defaults' => array(
+                            ],
+                        ],
+                    ],
+                    'authenticate'   => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/authenticate',
+                            'defaults' => [
                                 'controller' => 'lmcuser',
                                 'action'     => 'authenticate',
-                            ),
-                        ),
-                    ),
-                    'logout' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/logout',
-                            'defaults' => array(
+                            ],
+                        ],
+                    ],
+                    'logout'         => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/logout',
+                            'defaults' => [
                                 'controller' => 'lmcuser',
                                 'action'     => 'logout',
-                            ),
-                        ),
-                    ),
-                    'register' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/register',
-                            'defaults' => array(
+                            ],
+                        ],
+                    ],
+                    'register'       => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/register',
+                            'defaults' => [
                                 'controller' => 'lmcuser',
                                 'action'     => 'register',
-                            ),
-                        ),
-                    ),
-                    'changepassword' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/change-password',
-                            'defaults' => array(
+                            ],
+                        ],
+                    ],
+                    'changepassword' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/change-password',
+                            'defaults' => [
                                 'controller' => 'lmcuser',
                                 'action'     => 'changepassword',
-                            ),
-                        ),
-                    ),
-                    'changeemail' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/change-email',
-                            'defaults' => array(
+                            ],
+                        ],
+                    ],
+                    'changeemail'    => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/change-email',
+                            'defaults' => [
                                 'controller' => 'lmcuser',
-                                'action' => 'changeemail',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-);
+                                'action'     => 'changeemail',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+];

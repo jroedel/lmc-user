@@ -1,10 +1,13 @@
 {
-    "name": "zf-commons/zfc-user",
-    "description": "A generic user registration and authentication module for ZF2. Supports Laminas\\Db and Doctrine2.",
+    "name": "zf-commons/lmc-user",
+    "description": "A generic user registration and authentication module for Laminas. Supports Laminas\\Db and Doctrine2. (Formerly EdpUser)",
     "type": "library",
     "license": "BSD-3-Clause",
     "keywords": [
-        "zf2"
+        "laminas",
+        "authentication",
+        "laminas-mvc",
+        "laminas-authentication"
     ],
     "homepage": "https://github.com/ZF-Commons/LmcUser",
     "authors": [
@@ -19,11 +22,6 @@
             "homepage": "http://www.spiffyjr.me/"
         }
     ],
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.x-dev"
-        }
-    },
     "require": {
         "php": "^8.0 || ^8.1",
         "laminas/laminas-authentication": "^2.5",
@@ -55,11 +53,15 @@
         "laminas/laminas-captcha": "Laminas\\Captcha if you want to use the captcha component"
     },
     "autoload": {
-        "psr-0": {
-            "LmcUser": "src/"
+        "autoload": {
+            "psr-4": {
+                "LmcUser\\": "src/"
+            }
         },
-        "classmap": [
-            "./Module.php"
-        ]
+        "autoload-dev": {
+            "psr-4": {
+                "LmcUserTest\\": "tests/"
+            }
+        }
     }
 }
