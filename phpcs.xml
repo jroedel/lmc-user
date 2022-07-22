@@ -13,7 +13,6 @@
 
     <!-- Paths to check -->
     <file>config</file>
-    <file>Module.php</file>
     <file>src</file>
 
     <!-- Include all rules from the Laminas Coding Standard -->

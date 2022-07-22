@@ -52,7 +52,7 @@ class Db extends AbstractAdapter
             $e->setIdentity($storage['identity'])
               ->setCode(AuthenticationResult::SUCCESS)
               ->setMessages(['Authentication successful.']);
-            return;
+            return true;
         }
 
         $identity   = $e->getRequest()->getPost()->get('identity');
@@ -119,11 +119,11 @@ class Db extends AbstractAdapter
         return true;
     }
 
-    protected function updateUserPasswordHash(UserInterface $userObject, $password, Bcrypt $bcrypt)
+    protected function updateUserPasswordHash(UserInterface $userObject, $password, Bcrypt $bcrypt): static
     {
         $hash = explode('$', $userObject->getPassword());
         if ($hash[2] === $bcrypt->getCost()) {
-            return;
+            return $this;
         }
         $userObject->setPassword($bcrypt->create($password));
         $this->getMapper()->update($userObject);
@@ -159,7 +159,7 @@ class Db extends AbstractAdapter
      *
      * @return Db
      */
-    public function setMapper(UserMapperInterface $mapper)
+    public function setMapper(UserMapperInterface $mapper): static
     {
         $this->mapper = $mapper;
 
@@ -182,7 +182,7 @@ class Db extends AbstractAdapter
      * @param callable $credentialPreprocessor
      * @return $this
      */
-    public function setCredentialPreprocessor($credentialPreprocessor)
+    public function setCredentialPreprocessor($credentialPreprocessor): static
     {
         $this->credentialPreprocessor = $credentialPreprocessor;
         return $this;

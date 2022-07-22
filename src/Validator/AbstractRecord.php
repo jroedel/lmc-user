@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LmcUser\Validator;
 
 use Exception;
+use InvalidArgumentException;
 use Laminas\Validator\AbstractValidator;
 use LmcUser\Mapper\UserInterface;
 
@@ -15,8 +16,8 @@ abstract class AbstractRecord extends AbstractValidator
     /**
      * Error constants
      */
-    const ERROR_NO_RECORD_FOUND = 'noRecordFound';
-    const ERROR_RECORD_FOUND    = 'recordFound';
+    public const ERROR_NO_RECORD_FOUND = 'noRecordFound';
+    public const ERROR_RECORD_FOUND    = 'recordFound';
 
     /** @var array Message templates */
     protected $messageTemplates = [
@@ -37,7 +38,7 @@ abstract class AbstractRecord extends AbstractValidator
     public function __construct(array $options)
     {
         if (! array_key_exists('key', $options)) {
-            throw new Exception\InvalidArgumentException('No key provided');
+            throw new InvalidArgumentException('No key provided');
         }
 
         $this->setKey($options['key']);
@@ -60,7 +61,7 @@ abstract class AbstractRecord extends AbstractValidator
      *
      * @return AbstractRecord
      */
-    public function setMapper(UserInterface $mapper)
+    public function setMapper(UserInterface $mapper): static
     {
         $this->mapper = $mapper;
         return $this;
@@ -81,7 +82,7 @@ abstract class AbstractRecord extends AbstractValidator
      *
      * @param string $key
      */
-    public function setKey($key)
+    public function setKey($key): static
     {
         $this->key = $key;
         return $this;
@@ -108,7 +109,6 @@ abstract class AbstractRecord extends AbstractValidator
 
             default:
                 throw new Exception('Invalid key used in LmcUser validator');
-                break;
         }
 
         return $result;

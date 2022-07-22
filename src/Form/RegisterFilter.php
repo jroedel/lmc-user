@@ -106,7 +106,7 @@ class RegisterFilter extends ProvidesEventsInputFilter
         return $this->emailValidator;
     }
 
-    public function setEmailValidator($emailValidator)
+    public function setEmailValidator($emailValidator): static
     {
         $this->emailValidator = $emailValidator;
         return $this;
@@ -117,7 +117,7 @@ class RegisterFilter extends ProvidesEventsInputFilter
         return $this->usernameValidator;
     }
 
-    public function setUsernameValidator($usernameValidator)
+    public function setUsernameValidator($usernameValidator): static
     {
         $this->usernameValidator = $usernameValidator;
         return $this;
@@ -126,7 +126,7 @@ class RegisterFilter extends ProvidesEventsInputFilter
     /**
      * set options
      */
-    public function setOptions(RegistrationOptionsInterface $options)
+    public function setOptions(RegistrationOptionsInterface $options): static
     {
         $this->options = $options;
         return $this;

@@ -5,34 +5,31 @@ declare(strict_types=1);
 namespace LmcUser\Factory\Controller\Plugin;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 use LmcUser\Authentication\Adapter\AdapterChain;
 use LmcUser\Controller;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class LmcUserAuthentication implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $serviceLocator, $requestedName, ?array $options = null)
+    /**
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return Controller\Plugin\LmcUserAuthentication
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
-        $authService = $serviceLocator->get('lmcuser_auth_service');
-        $authAdapter = $serviceLocator->get(AdapterChain::class);
+        $authService = $container->get('lmcuser_auth_service');
+        $authAdapter = $container->get(AdapterChain::class);
 
         $controllerPlugin = new Controller\Plugin\LmcUserAuthentication();
         $controllerPlugin->setAuthService($authService);
         $controllerPlugin->setAuthAdapter($authAdapter);
 
         return $controllerPlugin;
-    }
-
-    /**
-     * Create service
-     *
-     * @return mixed
-     */
-    public function createService(ServiceLocatorInterface $serviceManager)
-    {
-        $serviceLocator = $serviceManager->getServiceLocator();
-
-        return $this->__invoke($serviceLocator, null);
     }
 }

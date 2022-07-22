@@ -43,6 +43,7 @@ class RedirectCallback
         $routeMatch = $this->application->getMvcEvent()->getRouteMatch();
         $redirect = $this->getRedirect($routeMatch->getMatchedRouteName(), $this->getRedirectRouteFromRequest());
 
+        /** @var Response $response */
         $response = $this->application->getResponse();
         $response->getHeaders()->addHeaderLine('Location', $redirect);
         $response->setStatusCode(302);
@@ -123,11 +124,9 @@ class RedirectCallback
             case 'lmcuser/authenticate':
                 $route = ($redirect) ?: $this->options->getLoginRedirectRoute();
                 return $this->assembleUrl($route);
-                break;
             case 'lmcuser/logout':
                 $route = ($redirect) ?: $this->options->getLogoutRedirectRoute();
                 return $this->assembleUrl($route);
-                break;
             default:
                 return $this->router->assemble(array(), array('name' => 'lmcuser'));
         }

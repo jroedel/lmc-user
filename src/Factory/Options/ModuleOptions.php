@@ -11,9 +11,9 @@ use Psr\Container\ContainerInterface;
 
 class ModuleOptions implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $serviceLocator, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
-        $config = $serviceLocator->get('Config');
+        $config = $container->get('Config');
 
         return new Options\ModuleOptions($config['lmcuser'] ?? []);
     }

@@ -72,7 +72,7 @@ class ChangeEmail extends ProvidesEventsForm
      *
      * @return ChangeEmail
      */
-    public function setAuthenticationOptions(AuthenticationOptionsInterface $authOptions)
+    public function setAuthenticationOptions(AuthenticationOptionsInterface $authOptions): static
     {
         $this->authOptions = $authOptions;
 

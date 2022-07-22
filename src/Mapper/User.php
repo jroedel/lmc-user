@@ -9,6 +9,7 @@ use LmcUser\Entity\UserInterface as UserEntityInterface;
 
 class User extends AbstractDbMapper implements UserInterface
 {
+    /** @var string */
     protected $tableName = 'user';
 
     public function findByEmail($email)
@@ -63,8 +64,12 @@ class User extends AbstractDbMapper implements UserInterface
         return $result;
     }
 
-    public function update(UserEntityInterface $entity, $where = null, $tableName = null, ?HydratorInterface $hydrator = null)
-    {
+    public function update(
+        UserEntityInterface $entity,
+        $where = null,
+        $tableName = null,
+        ?HydratorInterface $hydrator = null
+    ) {
         if (! $where) {
             $where = ['user_id' => $entity->getId()];
         }

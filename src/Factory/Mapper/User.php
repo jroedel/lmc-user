@@ -12,11 +12,11 @@ use Psr\Container\ContainerInterface;
 
 class User implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $serviceLocator, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         /** @var ModuleOptions $options */
-        $options   = $serviceLocator->get('lmcuser_module_options');
-        $dbAdapter = $serviceLocator->get('lmcuser_laminas_db_adapter');
+        $options   = $container->get('lmcuser_module_options');
+        $dbAdapter = $container->get('lmcuser_laminas_db_adapter');
 
         $entityClass = $options->getUserEntityClass();
         $tableName   = $options->getTableName();

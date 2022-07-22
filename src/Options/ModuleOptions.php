@@ -14,6 +14,7 @@ class ModuleOptions extends AbstractOptions implements
 {
     /**
      * Turn off strict options mode
+     * @var bool $__strictMode__
      */
     protected $__strictMode__ = false;
 
@@ -41,7 +42,7 @@ class ModuleOptions extends AbstractOptions implements
     /** @var int */
     protected $defaultUserState = 1;
 
-    /** @var Array */
+    /** @var array */
     protected $allowedLoginStates = [null, 1];
 
     /** @var array */
@@ -91,7 +92,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param string $loginRedirectRoute
      * @return ModuleOptions
      */
-    public function setLoginRedirectRoute($loginRedirectRoute)
+    public function setLoginRedirectRoute($loginRedirectRoute): static
     {
         $this->loginRedirectRoute = $loginRedirectRoute;
         return $this;
@@ -113,7 +114,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param string $logoutRedirectRoute
      * @return ModuleOptions
      */
-    public function setLogoutRedirectRoute($logoutRedirectRoute)
+    public function setLogoutRedirectRoute($logoutRedirectRoute): static
     {
         $this->logoutRedirectRoute = $logoutRedirectRoute;
         return $this;
@@ -135,7 +136,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param bool $useRedirectParameterIfPresent
      * @return ModuleOptions
      */
-    public function setUseRedirectParameterIfPresent($useRedirectParameterIfPresent)
+    public function setUseRedirectParameterIfPresent($useRedirectParameterIfPresent): static
     {
         $this->useRedirectParameterIfPresent = $useRedirectParameterIfPresent;
         return $this;
@@ -157,7 +158,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param string $userLoginWidgetViewTemplate
      * @return ModuleOptions
      */
-    public function setUserLoginWidgetViewTemplate($userLoginWidgetViewTemplate)
+    public function setUserLoginWidgetViewTemplate($userLoginWidgetViewTemplate): static
     {
         $this->userLoginWidgetViewTemplate = $userLoginWidgetViewTemplate;
         return $this;
@@ -179,7 +180,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param bool $enableRegistration
      * @return ModuleOptions
      */
-    public function setEnableRegistration($enableRegistration)
+    public function setEnableRegistration($enableRegistration): static
     {
         $this->enableRegistration = $enableRegistration;
         return $this;
@@ -201,7 +202,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param int $loginFormTimeout
      * @return ModuleOptions
      */
-    public function setLoginFormTimeout($loginFormTimeout)
+    public function setLoginFormTimeout($loginFormTimeout): static
     {
         $this->loginFormTimeout = $loginFormTimeout;
         return $this;
@@ -223,7 +224,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param int $userFormTimeout
      * @return ModuleOptions
      */
-    public function setUserFormTimeout($userFormTimeout)
+    public function setUserFormTimeout($userFormTimeout): static
     {
         $this->userFormTimeout = $userFormTimeout;
         return $this;
@@ -245,7 +246,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param bool $loginAfterRegistration
      * @return ModuleOptions
      */
-    public function setLoginAfterRegistration($loginAfterRegistration)
+    public function setLoginAfterRegistration($loginAfterRegistration): static
     {
         $this->loginAfterRegistration = $loginAfterRegistration;
         return $this;
@@ -277,7 +278,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param boolean $flag
      * @return ModuleOptions
      */
-    public function setEnableUserState($flag)
+    public function setEnableUserState($flag): static
     {
         $this->enableUserState = $flag;
         return $this;
@@ -299,7 +300,7 @@ class ModuleOptions extends AbstractOptions implements
      * @param int $state
      * @return ModuleOptions
      */
-    public function setDefaultUserState($state)
+    public function setDefaultUserState($state): static
     {
         $this->defaultUserState = $state;
         return $this;
@@ -318,10 +319,10 @@ class ModuleOptions extends AbstractOptions implements
     /**
      * set list of states to allow user login
      *
-     * @param Array $states
+     * @param array $states
      * @return ModuleOptions
      */
-    public function setAllowedLoginStates(array $states)
+    public function setAllowedLoginStates(array $states): static
     {
         $this->allowedLoginStates = $states;
         return $this;
@@ -330,10 +331,10 @@ class ModuleOptions extends AbstractOptions implements
     /**
      * set auth adapters
      *
-     * @param array $authAdapterss
+     * @param array $authAdapters
      * @return ModuleOptions
      */
-    public function setAuthAdapters($authAdapters)
+    public function setAuthAdapters($authAdapters): static
     {
         $this->authAdapters = $authAdapters;
         return $this;

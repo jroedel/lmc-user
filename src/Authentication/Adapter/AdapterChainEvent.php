@@ -26,7 +26,7 @@ class AdapterChainEvent extends Event
      * @param mixed $identity
      * @return AdapterChainEvent
      */
-    public function setIdentity($identity = null)
+    public function setIdentity($identity = null): static
     {
         if (null === $identity) {
             // Setting the identity to null resets the code and messages.
@@ -53,7 +53,7 @@ class AdapterChainEvent extends Event
      * @param int $code
      * @return AdapterChainEvent
      */
-    public function setCode($code = null)
+    public function setCode($code = null): static
     {
         $this->setParam('code', $code);
         return $this;
@@ -75,7 +75,7 @@ class AdapterChainEvent extends Event
      * @param array $messages
      * @return AdapterChainEvent
      */
-    public function setMessages($messages = [])
+    public function setMessages($messages = []): static
     {
         $this->setParam('messages', $messages);
         return $this;
@@ -96,7 +96,7 @@ class AdapterChainEvent extends Event
      *
      * @return AdapterChainEvent
      */
-    public function setRequest(Request $request)
+    public function setRequest(Request $request): static
     {
         $this->setParam('request', $request);
         $this->request = $request;

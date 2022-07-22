@@ -12,7 +12,6 @@ use Laminas\ModuleManager\Feature\ControllerProviderInterface;
 use Laminas\ModuleManager\Feature\ServiceProviderInterface;
 use LmcUser\Authentication\Adapter\AdapterChain;
 use LmcUser\Authentication\Adapter\AdapterChainServiceFactory;
-use LmcUser\Authentication\Adapter\Db;
 use LmcUser\Factory\Authentication\Adapter\DbFactory;
 use LmcUser\Factory\AuthenticationService;
 use LmcUser\Factory\Controller\Plugin\LmcUserAuthentication;
@@ -101,7 +100,7 @@ class Module implements
                 Form\ChangePassword::class       => ChangePassword::class,
                 Form\ChangeEmail::class          => ChangeEmail::class,
                 Authentication\Adapter\Db::class => DbFactory::class,
-                Authentication\Storage\Db::class => \LmcUser\Factory\Authentication\Storage\DbFactory::class,
+                Authentication\Storage\Db::class => Factory\Authentication\Storage\DbFactory::class,
                 Service\User::class              => UserFactory::class,
             ],
         ];

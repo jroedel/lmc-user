@@ -94,7 +94,7 @@ class AdapterChain implements AdapterInterface
      *
      * @return AdapterChain
      */
-    public function resetAdapters()
+    public function resetAdapters(): static
     {
         $sharedManager = $this->getEventManager()->getSharedManager();
 
@@ -115,7 +115,7 @@ class AdapterChain implements AdapterInterface
      *
      * @return AdapterChain
      */
-    public function logoutAdapters()
+    public function logoutAdapters(): static
     {
         //Adapters might need to perform additional cleanup after logout
         $e = $this->getEvent();
@@ -147,7 +147,7 @@ class AdapterChain implements AdapterInterface
      *
      * @return AdapterChain
      */
-    public function setEvent(Event $e)
+    public function setEvent(Event $e): static
     {
         if (! $e instanceof AdapterChainEvent) {
             $eventParams = $e->getParams();

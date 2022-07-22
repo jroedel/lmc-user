@@ -56,9 +56,8 @@ abstract class AbstractDbMapper extends EventProvider
      * Performs some basic initialization setup and checks before running a query
      *
      * @throws Exception
-     * @return null
      */
-    protected function initialize()
+    protected function initialize(): void
     {
         if ($this->isInitialized) {
             return;
@@ -89,9 +88,13 @@ abstract class AbstractDbMapper extends EventProvider
 
     /**
      * @return HydratingResultSet
+     * @throws Exception
      */
-    protected function select(Select $select, ?UserEntityInterface $entityPrototype = null, ?HydratorInterface $hydrator = null)
-    {
+    protected function select(
+        Select $select,
+        ?UserEntityInterface $entityPrototype = null,
+        ?HydratorInterface $hydrator = null
+    ) {
         $this->initialize();
         $stmt      = $this->getSlaveSql()->prepareStatementForSqlObject($select);
         $resultSet = new HydratingResultSet(
@@ -123,8 +126,12 @@ abstract class AbstractDbMapper extends EventProvider
      * @param string|TableIdentifier|null $tableName
      * @return ResultInterface
      */
-    protected function update(UserEntityInterface $entity, $where, $tableName = null, ?HydratorInterface $hydrator = null)
-    {
+    protected function update(
+        UserEntityInterface $entity,
+        $where,
+        $tableName = null,
+        ?HydratorInterface $hydrator = null
+    ) {
         $this->initialize();
         $tableName = $tableName ?: $this->tableName;
         $sql       = $this->getSql()->setTable($tableName);
@@ -170,7 +177,7 @@ abstract class AbstractDbMapper extends EventProvider
     /**
      * @return AbstractDbMapper
      */
-    public function setEntityPrototype(UserEntityInterface $entityPrototype)
+    public function setEntityPrototype(UserEntityInterface $entityPrototype): static
     {
         $this->entityPrototype    = $entityPrototype;
         $this->resultSetPrototype = null;
@@ -188,7 +195,7 @@ abstract class AbstractDbMapper extends EventProvider
     /**
      * @return AbstractDbMapper
      */
-    public function setDbAdapter(Adapter $dbAdapter)
+    public function setDbAdapter(Adapter $dbAdapter): static
     {
         $this->dbAdapter = $dbAdapter;
         if ($dbAdapter instanceof MasterSlaveAdapterInterface) {
@@ -208,7 +215,7 @@ abstract class AbstractDbMapper extends EventProvider
     /**
      * @return AbstractDbMapper
      */
-    public function setDbSlaveAdapter(Adapter $dbSlaveAdapter)
+    public function setDbSlaveAdapter(Adapter $dbSlaveAdapter): static
     {
         $this->dbSlaveAdapter = $dbSlaveAdapter;
         return $this;
@@ -228,7 +235,7 @@ abstract class AbstractDbMapper extends EventProvider
     /**
      * @return AbstractDbMapper
      */
-    public function setHydrator(HydratorInterface $hydrator)
+    public function setHydrator(HydratorInterface $hydrator): static
     {
         $this->hydrator           = $hydrator;
         $this->resultSetPrototype = null;
@@ -249,7 +256,7 @@ abstract class AbstractDbMapper extends EventProvider
     /**
      * @return AbstractDbMapper
      */
-    protected function setSql(Sql $sql)
+    protected function setSql(Sql $sql): static
     {
         $this->sql = $sql;
         return $this;
@@ -269,7 +276,7 @@ abstract class AbstractDbMapper extends EventProvider
     /**
      * @return AbstractDbMapper
      */
-    protected function setSlaveSql(Sql $sql)
+    protected function setSlaveSql(Sql $sql): static
     {
         $this->slaveSql = $sql;
         return $this;

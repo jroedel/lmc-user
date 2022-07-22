@@ -40,7 +40,7 @@ class User implements UserInterface
      * @param int $id
      * @return UserInterface
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = (int) $id;
         return $this;
@@ -62,7 +62,7 @@ class User implements UserInterface
      * @param string $username
      * @return UserInterface
      */
-    public function setUsername($username)
+    public function setUsername($username): static
     {
         $this->username = $username;
         return $this;
@@ -84,7 +84,7 @@ class User implements UserInterface
      * @param string $email
      * @return UserInterface
      */
-    public function setEmail($email)
+    public function setEmail($email): static
     {
         $this->email = $email;
         return $this;
@@ -106,7 +106,7 @@ class User implements UserInterface
      * @param string $displayName
      * @return UserInterface
      */
-    public function setDisplayName($displayName)
+    public function setDisplayName($displayName): static
     {
         $this->displayName = $displayName;
         return $this;
@@ -128,7 +128,7 @@ class User implements UserInterface
      * @param string $password
      * @return UserInterface
      */
-    public function setPassword($password)
+    public function setPassword($password): static
     {
         $this->password = $password;
         return $this;
@@ -150,7 +150,7 @@ class User implements UserInterface
      * @param int $state
      * @return UserInterface
      */
-    public function setState($state)
+    public function setState($state): static
     {
         $this->state = $state;
         return $this;

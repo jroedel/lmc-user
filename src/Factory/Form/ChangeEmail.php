@@ -11,15 +11,15 @@ use Psr\Container\ContainerInterface;
 
 class ChangeEmail implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $serviceManager, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
-        $options = $serviceManager->get('lmcuser_module_options');
+        $options = $container->get('lmcuser_module_options');
         $form    = new Form\ChangeEmail(null, $options);
 
         $form->setInputFilter(new Form\ChangeEmailFilter(
             $options,
             new Validator\NoRecordExists([
-                'mapper' => $serviceManager->get('lmcuser_user_mapper'),
+                'mapper' => $container->get('lmcuser_user_mapper'),
                 'key'    => 'email',
             ])
         ));

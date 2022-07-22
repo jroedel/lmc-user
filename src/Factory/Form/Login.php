@@ -10,9 +10,9 @@ use Psr\Container\ContainerInterface;
 
 class Login implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $serviceManager, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
-        $options = $serviceManager->get('lmcuser_module_options');
+        $options = $container->get('lmcuser_module_options');
         $form    = new Form\Login(null, $options);
 
         $form->setInputFilter(new Form\LoginFilter($options));

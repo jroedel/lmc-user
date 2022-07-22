@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace LmcUser\Form;
 
 use Laminas\InputFilter\InputFilter;
+use Laminas\Validator\ValidatorInterface;
 use LmcUser\Options\AuthenticationOptionsInterface;
-
-use function array_push;
 
 class ChangeEmailFilter extends InputFilter
 {
-    protected $emailValidator;
-
-    public function __construct(AuthenticationOptionsInterface $options, $emailValidator)
+    public function __construct(AuthenticationOptionsInterface $options, protected ValidatorInterface $emailValidator)
     {
         $this->emailValidator = $emailValidator;
 
@@ -24,9 +21,9 @@ class ChangeEmailFilter extends InputFilter
         ];
 
         $identityFields = $options->getAuthIdentityFields();
-        if ($identityFields == ['email']) {
-            $validators = ['name' => 'EmailAddress'];
-            array_push($identityParams['validators'], $validators);
+        if ($identityFields === ['email']) {
+            $validators                     = ['name' => 'EmailAddress'];
+            $identityParams['validators'][] = $validators;
         }
 
         $this->add($identityParams);
@@ -56,12 +53,12 @@ class ChangeEmailFilter extends InputFilter
         ]);
     }
 
-    public function getEmailValidator()
+    public function getEmailValidator(): ValidatorInterface
     {
         return $this->emailValidator;
     }
 
-    public function setEmailValidator($emailValidator)
+    public function setEmailValidator(ValidatorInterface $emailValidator): static
     {
         $this->emailValidator = $emailValidator;
         return $this;

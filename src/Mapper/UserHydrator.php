@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LmcUser\Mapper;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
@@ -14,13 +16,12 @@ class UserHydrator extends ClassMethodsHydrator
      * @return array
      * @throws Exception\InvalidArgumentException
      */
-    public function extract($object)
+    public function extract($object): array
     {
-        if (!$object instanceof UserEntityInterface) {
+        if (! $object instanceof UserEntityInterface) {
             throw new Exception\InvalidArgumentException('$object must be an instance of LmcUser\Entity\UserInterface');
         }
 
-        /* @var $object UserEntityInterface */
         $data = parent::extract($object);
         if ($data['id'] !== null) {
             $data = $this->mapField('id', 'user_id', $data);
@@ -41,7 +42,7 @@ class UserHydrator extends ClassMethodsHydrator
      */
     public function hydrate(array $data, $object)
     {
-        if (!$object instanceof UserEntityInterface) {
+        if (! $object instanceof UserEntityInterface) {
             throw new Exception\InvalidArgumentException('$object must be an instance of LmcUser\Entity\UserInterface');
         }
 
@@ -50,13 +51,7 @@ class UserHydrator extends ClassMethodsHydrator
         return parent::hydrate($data, $object);
     }
 
-    /**
-     * @param string $keyFrom
-     * @param string $keyTo
-     * @param array $array
-     * @return array
-     */
-    protected function mapField($keyFrom, $keyTo, array $array)
+    protected function mapField(string $keyFrom, string $keyTo, array $array): array
     {
         $array[$keyTo] = $array[$keyFrom];
         unset($array[$keyFrom]);

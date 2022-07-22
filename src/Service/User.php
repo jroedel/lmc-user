@@ -46,7 +46,7 @@ class User extends EventProvider
      * createFromForm
      *
      * @param array $data
-     * @return UserInterface
+     * @return false|UserInterface
      * @throws Exception\InvalidArgumentException
      */
     public function register(array $data)
@@ -115,6 +115,9 @@ class User extends EventProvider
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function changeEmail(array $data)
     {
         $currentUser = $this->getAuthService()->getIdentity();
@@ -153,7 +156,7 @@ class User extends EventProvider
      *
      * @return User
      */
-    public function setUserMapper(UserMapperInterface $userMapper)
+    public function setUserMapper(UserMapperInterface $userMapper): static
     {
         $this->userMapper = $userMapper;
         return $this;
@@ -177,7 +180,7 @@ class User extends EventProvider
      *
      * @return User
      */
-    public function setAuthService(AuthenticationService $authService)
+    public function setAuthService(AuthenticationService $authService): static
     {
         $this->authService = $authService;
         return $this;
@@ -197,7 +200,7 @@ class User extends EventProvider
     /**
      * @return User
      */
-    public function setRegisterForm(Form $registerForm)
+    public function setRegisterForm(Form $registerForm): static
     {
         $this->registerForm = $registerForm;
         return $this;
@@ -217,7 +220,7 @@ class User extends EventProvider
     /**
      * @return User
      */
-    public function setChangePasswordForm(Form $changePasswordForm)
+    public function setChangePasswordForm(Form $changePasswordForm): static
     {
         $this->changePasswordForm = $changePasswordForm;
         return $this;
@@ -259,7 +262,7 @@ class User extends EventProvider
      *
      * @return User
      */
-    public function setServiceManager(ContainerInterface $serviceManager)
+    public function setServiceManager(ContainerInterface $serviceManager): static
     {
         $this->serviceManager = $serviceManager;
         return $this;
@@ -284,7 +287,7 @@ class User extends EventProvider
      *
      * @return User
      */
-    public function setFormHydrator(Hydrator\HydratorInterface $formHydrator)
+    public function setFormHydrator(Hydrator\HydratorInterface $formHydrator): static
     {
         $this->formHydrator = $formHydrator;
         return $this;

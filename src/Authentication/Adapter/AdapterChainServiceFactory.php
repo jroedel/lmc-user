@@ -15,16 +15,16 @@ use function is_callable;
 
 class AdapterChainServiceFactory implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $serviceLocator, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $chain = new AdapterChain();
-        $chain->setEventManager($serviceLocator->get('EventManager'));
+        $chain->setEventManager($container->get('EventManager'));
 
-        $options = $this->getOptions($serviceLocator);
+        $options = $this->getOptions($container);
 
         //iterate and attach multiple adapters and events if offered
         foreach ($options->getAuthAdapters() as $priority => $adapterName) {
-            $adapter = $serviceLocator->get($adapterName);
+            $adapter = $container->get($adapterName);
 
             if (is_callable([$adapter, 'authenticate'])) {
                 $chain->getEventManager()->attach('authenticate', [$adapter, 'authenticate'], $priority);
@@ -51,7 +51,7 @@ class AdapterChainServiceFactory implements FactoryInterface
      *
      * @return AdapterChainServiceFactory
      */
-    public function setOptions(ModuleOptions $options)
+    public function setOptions(ModuleOptions $options): static
     {
         $this->options = $options;
         return $this;

@@ -365,7 +365,7 @@ class UserController extends AbstractActionController
         return $this->userService;
     }
 
-    public function setUserService(UserService $userService)
+    public function setUserService(UserService $userService): static
     {
         $this->userService = $userService;
         return $this;
@@ -392,7 +392,7 @@ class UserController extends AbstractActionController
         return $this->loginForm;
     }
 
-    public function setLoginForm(FormInterface $loginForm)
+    public function setLoginForm(FormInterface $loginForm): static
     {
         $this->loginForm = $loginForm;
         return $this;
@@ -406,7 +406,7 @@ class UserController extends AbstractActionController
         return $this->changePasswordForm;
     }
 
-    public function setChangePasswordForm(FormInterface $changePasswordForm)
+    public function setChangePasswordForm(FormInterface $changePasswordForm): static
     {
         $this->changePasswordForm = $changePasswordForm;
         return $this;
@@ -418,7 +418,7 @@ class UserController extends AbstractActionController
      * @param UserControllerOptionsInterface $options
      * @return UserController
      */
-    public function setOptions(UserControllerOptionsInterface $options)
+    public function setOptions(UserControllerOptionsInterface $options): static
     {
         $this->options = $options;
         return $this;
@@ -439,7 +439,7 @@ class UserController extends AbstractActionController
 
     /**
      * Get changeEmailForm.
-     * @return ChangeEmailForm
+     * @return FormInterface
      */
     public function getChangeEmailForm()
     {
@@ -453,9 +453,8 @@ class UserController extends AbstractActionController
      * Set changeEmailForm.
      *
      * @param $changeEmailForm - the value to set.
-     * @return $this
      */
-    public function setChangeEmailForm($changeEmailForm)
+    public function setChangeEmailForm($changeEmailForm): static
     {
         $this->changeEmailForm = $changeEmailForm;
         return $this;

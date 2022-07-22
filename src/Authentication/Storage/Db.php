@@ -122,7 +122,7 @@ class Db implements Storage\StorageInterface
      * @access public
      * @return Db
      */
-    public function setStorage(Storage\StorageInterface $storage)
+    public function setStorage(Storage\StorageInterface $storage): static
     {
         $this->storage = $storage;
         return $this;
@@ -146,7 +146,7 @@ class Db implements Storage\StorageInterface
      *
      * @return Db
      */
-    public function setMapper(UserMapper $mapper)
+    public function setMapper(UserMapper $mapper): static
     {
         $this->mapper = $mapper;
         return $this;

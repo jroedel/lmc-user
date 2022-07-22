@@ -12,11 +12,11 @@ use Psr\Container\ContainerInterface;
 
 class AuthenticationService implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $serviceLocator, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         return new \Laminas\Authentication\AuthenticationService(
-            $serviceLocator->get(Db::class),
-            $serviceLocator->get(AdapterChain::class)
+            $container->get(Db::class),
+            $container->get(AdapterChain::class)
         );
     }
 

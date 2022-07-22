@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LmcBase\Db\Adapter;
 
 use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\DriverInterface;
 use Laminas\Db\Adapter\Platform;
 use Laminas\Db\ResultSet;
 use LmcUser\Db\Adapter\MasterSlaveAdapterInterface;
@@ -18,7 +19,7 @@ class MasterSlaveAdapter extends Adapter implements MasterSlaveAdapterInterface
      */
     protected $slaveAdapter;
     /**
-     * @param Driver\DriverInterface|array $driver
+     * @param DriverInterface|array $driver
      * @param ResultSet\ResultSet $queryResultPrototype
      */
     public function __construct(

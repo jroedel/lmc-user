@@ -57,7 +57,7 @@ class Register extends Base
      *
      * @return Register
      */
-    public function setRegistrationOptions(RegistrationOptionsInterface $registrationOptions)
+    public function setRegistrationOptions(RegistrationOptionsInterface $registrationOptions): static
     {
         $this->registrationOptions = $registrationOptions;
         return $this;

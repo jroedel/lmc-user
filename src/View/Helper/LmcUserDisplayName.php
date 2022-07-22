@@ -68,7 +68,7 @@ class LmcUserDisplayName extends AbstractHelper
      *
      * @return LmcUserDisplayName
      */
-    public function setAuthService(AuthenticationService $authService)
+    public function setAuthService(AuthenticationService $authService): static
     {
         $this->authService = $authService;
         return $this;

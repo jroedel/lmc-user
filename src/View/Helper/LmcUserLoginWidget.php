@@ -70,7 +70,7 @@ class LmcUserLoginWidget extends AbstractHelper
      *
      * @return LmcUserLoginWidget
      */
-    public function setLoginForm(LoginForm $loginForm)
+    public function setLoginForm(LoginForm $loginForm): static
     {
         $this->loginForm = $loginForm;
         return $this;
@@ -80,7 +80,7 @@ class LmcUserLoginWidget extends AbstractHelper
      * @param string $viewTemplate
      * @return LmcUserLoginWidget
      */
-    public function setViewTemplate($viewTemplate)
+    public function setViewTemplate($viewTemplate): static
     {
         $this->viewTemplate = $viewTemplate;
         return $this;

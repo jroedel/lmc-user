@@ -32,7 +32,7 @@ abstract class AbstractAdapter implements ChainableAdapter
      *
      * @return AbstractAdapter Provides a fluent interface
      */
-    public function setStorage(Storage\StorageInterface $storage)
+    public function setStorage(Storage\StorageInterface $storage): static
     {
         $this->storage = $storage;
         return $this;
@@ -55,7 +55,7 @@ abstract class AbstractAdapter implements ChainableAdapter
      * @param bool $bool
      * @return AbstractAdapter
      */
-    public function setSatisfied($bool = true)
+    public function setSatisfied($bool = true): static
     {
         $storage                 = $this->getStorage()->read() ?: [];
         $storage['is_satisfied'] = $bool;

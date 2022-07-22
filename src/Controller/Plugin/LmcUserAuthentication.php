@@ -53,7 +53,7 @@ class LmcUserAuthentication extends AbstractPlugin
     /**
      * Set authAdapter.
      */
-    public function setAuthAdapter(AuthAdapter $authAdapter)
+    public function setAuthAdapter(AuthAdapter $authAdapter): static
     {
         $this->authAdapter = $authAdapter;
         return $this;
@@ -72,7 +72,7 @@ class LmcUserAuthentication extends AbstractPlugin
     /**
      * Set authService.
      */
-    public function setAuthService(AuthenticationService $authService)
+    public function setAuthService(AuthenticationService $authService): static
     {
         $this->authService = $authService;
         return $this;

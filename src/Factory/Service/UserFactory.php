@@ -11,10 +11,10 @@ use Psr\Container\ContainerInterface;
 
 class UserFactory implements FactoryInterface
 {
-    public function __invoke(ContainerInterface $serviceLocator, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $service = new User();
-        $service->setServiceManager($serviceLocator);
+        $service->setServiceManager($container);
 
         return $service;
     }
