@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LmcUser\Authentication\Adapter;
 
 use Laminas\Authentication\Result as AuthenticationResult;
-use Laminas\Crypt\Password\Bcrypt;
 use Laminas\ServiceManager\ServiceManager;
 use Laminas\Session\Container as SessionContainer;
 use LmcUser\Entity\UserInterface;
@@ -19,6 +18,11 @@ use function explode;
 use function in_array;
 use function is_callable;
 use function is_object;
+use function password_hash;
+use function password_verify;
+use function sprintf;
+
+use const PASSWORD_BCRYPT;
 
 class Db extends AbstractAdapter
 {
@@ -92,9 +96,7 @@ class Db extends AbstractAdapter
             }
         }
 
-        $bcrypt = new Bcrypt();
-        $bcrypt->setCost($this->getOptions()->getPasswordCost());
-        if (! $bcrypt->verify($credential, $userObject->getPassword())) {
+        if (! password_verify($credential, $userObject->getPassword())) {
             // Password does not match
             $e->setCode(AuthenticationResult::FAILURE_CREDENTIAL_INVALID)
               ->setMessages(['Supplied credential is invalid.']);
@@ -109,7 +111,7 @@ class Db extends AbstractAdapter
         // Success!
         $e->setIdentity($userObject->getId());
         // Update user's password hash if the cost parameter has changed
-        $this->updateUserPasswordHash($userObject, $credential, $bcrypt);
+        $this->updateUserPasswordHash($userObject, $credential, (int) $this->getOptions()->getPasswordCost());
         $this->setSatisfied(true);
         $storage             = $this->getStorage()->read();
         $storage['identity'] = $e->getIdentity();
@@ -119,13 +121,13 @@ class Db extends AbstractAdapter
         return true;
     }
 
-    protected function updateUserPasswordHash(UserInterface $userObject, $password, Bcrypt $bcrypt): static
+    protected function updateUserPasswordHash(UserInterface $userObject, $password, int $cost): static
     {
         $hash = explode('$', $userObject->getPassword());
-        if ($hash[2] === $bcrypt->getCost()) {
+        if ($hash[2] === sprintf('%02d', $cost)) {
             return $this;
         }
-        $userObject->setPassword($bcrypt->create($password));
+        $userObject->setPassword(password_hash($password, PASSWORD_BCRYPT, ['cost' => $cost]));
         $this->getMapper()->update($userObject);
         return $this;
     }
