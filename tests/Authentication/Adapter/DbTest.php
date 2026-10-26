@@ -328,18 +328,13 @@ class DbTest extends \PHPUnit_Framework_TestCase
             ->method('getPassword')
             ->will($this->returnValue('$2a$10$x05G2P803MrB3jaORBXBn.QHtiYzGQOBjQ7unpEIge.Mrz6c3KiVm'));
 
-        $bcrypt = $this->getMock('Laminas\Crypt\Password\Bcrypt');
-        $bcrypt->expects($this->once())
-            ->method('getCost')
-            ->will($this->returnValue('10'));
-
         $method = new \ReflectionMethod(
             'LmcUser\Authentication\Adapter\Db',
             'updateUserPasswordHash'
         );
         $method->setAccessible(true);
 
-        $result = $method->invoke($this->db, $user, 'LmcUser', $bcrypt);
+        $result = $method->invoke($this->db, $user, 'LmcUser', 10);
         $this->assertNull($result);
     }
 
@@ -354,16 +349,7 @@ class DbTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue('$2a$10$x05G2P803MrB3jaORBXBn.QHtiYzGQOBjQ7unpEIge.Mrz6c3KiVm'));
         $user->expects($this->once())
             ->method('setPassword')
-            ->with('$2a$10$D41KPuDCn6iGoESjnLee/uE/2Xo985sotVySo2HKDz6gAO4hO/Gh6');
-
-        $bcrypt = $this->getMock('Laminas\Crypt\Password\Bcrypt');
-        $bcrypt->expects($this->once())
-            ->method('getCost')
-            ->will($this->returnValue('5'));
-        $bcrypt->expects($this->once())
-            ->method('create')
-            ->with('LmcUserNew')
-            ->will($this->returnValue('$2a$10$D41KPuDCn6iGoESjnLee/uE/2Xo985sotVySo2HKDz6gAO4hO/Gh6'));
+            ->with($this->stringStartsWith('$2y$05$'));
 
         $mapper = $this->getMock('LmcUser\Mapper\User');
         $mapper->expects($this->once())
@@ -378,7 +364,7 @@ class DbTest extends \PHPUnit_Framework_TestCase
         );
         $method->setAccessible(true);
 
-        $result = $method->invoke($this->db, $user, 'LmcUserNew', $bcrypt);
+        $result = $method->invoke($this->db, $user, 'LmcUserNew', 5);
         $this->assertInstanceOf('LmcUser\Authentication\Adapter\Db', $result);
     }
 

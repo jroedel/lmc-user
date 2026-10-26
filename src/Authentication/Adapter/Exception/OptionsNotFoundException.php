@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LmcUser\Authentication\Adapter\Exception;
 
-use Laminas\Math\Exception\RuntimeException;
+use RuntimeException;
 
 class OptionsNotFoundException extends RuntimeException
 {

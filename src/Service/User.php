@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LmcUser\Service;
 
 use Laminas\Authentication\AuthenticationService;
-use Laminas\Crypt\Password\Bcrypt;
 use Laminas\Form\Form;
 use Laminas\Hydrator;
 use Laminas\Hydrator\ClassMethodsHydrator;
@@ -15,6 +14,11 @@ use LmcUser\EventManager\EventProvider;
 use LmcUser\Mapper\UserInterface as UserMapperInterface;
 use LmcUser\Options\UserServiceOptionsInterface;
 use Psr\Container\ContainerInterface;
+
+use function password_hash;
+use function password_verify;
+
+use const PASSWORD_BCRYPT;
 
 class User extends EventProvider
 {
@@ -64,9 +68,7 @@ class User extends EventProvider
         $user = $form->getData();
         /** @var UserInterface $user */
 
-        $bcrypt = new Bcrypt();
-        $bcrypt->setCost($this->getOptions()->getPasswordCost());
-        $user->setPassword($bcrypt->create($user->getPassword()));
+        $user->setPassword($this->hashPassword($user->getPassword()));
 
         if ($this->getOptions()->getEnableUsername()) {
             $user->setUsername($data['username']);
@@ -98,14 +100,11 @@ class User extends EventProvider
         $oldPass = $data['credential'];
         $newPass = $data['newCredential'];
 
-        $bcrypt = new Bcrypt();
-        $bcrypt->setCost($this->getOptions()->getPasswordCost());
-
-        if (! $bcrypt->verify($oldPass, $currentUser->getPassword())) {
+        if (! password_verify($oldPass, $currentUser->getPassword())) {
             return false;
         }
 
-        $pass = $bcrypt->create($newPass);
+        $pass = $this->hashPassword($newPass);
         $currentUser->setPassword($pass);
 
         $this->getEventManager()->trigger(__FUNCTION__, $this, ['user' => $currentUser, 'data' => $data]);
@@ -122,10 +121,7 @@ class User extends EventProvider
     {
         $currentUser = $this->getAuthService()->getIdentity();
 
-        $bcrypt = new Bcrypt();
-        $bcrypt->setCost($this->getOptions()->getPasswordCost());
-
-        if (! $bcrypt->verify($data['credential'], $currentUser->getPassword())) {
+        if (! password_verify($data['credential'], $currentUser->getPassword())) {
             return false;
         }
 
@@ -136,6 +132,14 @@ class User extends EventProvider
         $this->getEventManager()->trigger(__FUNCTION__ . '.post', $this, ['user' => $currentUser, 'data' => $data]);
 
         return true;
+    }
+
+    /**
+     * A bcrypt hash at the configured cost, as Laminas\Crypt\Password\Bcrypt made.
+     */
+    private function hashPassword(string $password): string
+    {
+        return password_hash($password, PASSWORD_BCRYPT, ['cost' => (int) $this->getOptions()->getPasswordCost()]);
     }
 
     /**
